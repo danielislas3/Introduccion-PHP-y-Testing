@@ -50,4 +50,13 @@ class UserTest extends TestCase
 		$this->assertEmpty($this->user->getTheFullName());
   }
  
+  public function testName_LastName_Email_WhithOutSpaces(){
+    $this->user->setName('   Pedrito  ');
+    $this->user->setLastName('   Perez   ');
+    $this->user->setEmail('   hola@info.com  ');
+
+    $this->assertEquals($this->user->getName(), 'Pedrito');
+    $this->assertEquals($this->user->getLastName(),'Perez');
+    $this->assertEquals($this->user->getEmail(),'hola@info.com');
+  }
 }

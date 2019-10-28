@@ -11,16 +11,16 @@ class User
 
   public function setName($name)
   {
-    $this->name = $name;
+    $this->name = trim($name);
    
   }
   public function setLastName($lastName)
   {
-    $this->lastName = $lastName;   
+    $this->lastName = trim($lastName);   
   }
   public function setEmail($email)
   {
-    $this->email = $email;   
+    $this->email = trim($email);   
   }
 
   public function getName()
