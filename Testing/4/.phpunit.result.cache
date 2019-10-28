@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":277:{a:2:{s:7:"defects";a:2:{s:36:"SlugTest::test_render_without_spaces";i:3;s:34:"SlugTest::test_render_sin_espacios";i:3;}s:5:"times";a:3:{s:21:"SlugTest::test_render";d:0.054;s:36:"SlugTest::test_render_without_spaces";d:0.012;s:34:"SlugTest::test_render_sin_espacios";d:0.002;}}}
