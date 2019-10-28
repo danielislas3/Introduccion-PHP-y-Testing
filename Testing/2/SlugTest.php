@@ -1,18 +1,18 @@
  <?php
 
-use PHPUnit\Framework\TestCase;
+  use PHPUnit\Framework\TestCase;
 
-class SlugTest extends TestCase{
+  class SlugTest extends TestCase
+  {
 
-  public function test_render(){
-    require "Slug.php";
+    public function test_render()
+    {
+      require "Slug.php";
 
-    $slug = new Slug("Cursos de Laravel");
+      $slug = new Slug("Cursos de Laravel");
 
-    $expected = "cursos-de-laravel";
+      $expected = "cursos-de-laravel";
 
-    $this->assertEquals($slug->render(),$expected);
-
-
+      $this->assertEquals($slug->render(), $expected);
+    }
   }
-}
