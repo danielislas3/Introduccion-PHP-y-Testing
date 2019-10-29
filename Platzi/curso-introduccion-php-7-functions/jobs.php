@@ -1,12 +1,8 @@
 <?php
 
-require 'app/Models/Job.php';
-require 'app/Models/Proyect.php';
-require_once 'app/Models/Printable.php';
+require_once 'vendor/autoload.php';
 
-require 'lib1/Proyect.php';
-
-use App\models\{Job,Proyect};
+use App\models\{Job,Proyect,Printable};
 
 $job1 = new Job('Web Developer','This is an awesome job!!!');
 $job1->months= 16;
