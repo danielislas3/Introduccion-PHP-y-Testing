@@ -2,6 +2,11 @@
 
 require 'app/Models/Job.php';
 require 'app/Models/Proyect.php';
+require_once 'app/Models/Printable.php';
+
+require 'lib1/Proyect.php';
+
+use App\models\{Job,Proyect};
 
 $job1 = new Job('Web Developer','This is an awesome job!!!');
 $job1->months= 16;
@@ -24,14 +29,14 @@ $jobs = [
 
 
 
-function printElement($job) {
+function printElement(Printable $job) {
   if($job->visible == false) {
     return;
   }
 
   echo '<li class="work-position">';
   echo '<h5>' . $job->getTitle() . '</h5>';
-  echo '<p>' . $job->description . '</p>';
+  echo '<p>' . $job->getDescription() . '</p>';
   echo '<p>' . $job->getDurationAsString() . '</p>';
   echo '<strong>Achievements:</strong>';
   echo '<ul>';
