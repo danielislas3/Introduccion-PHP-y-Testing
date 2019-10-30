@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-use App\models\{Job,Proyect,Printable};
+use App\Models\{Job,Proyect,Printable};
 
 $job1 = new Job('Web Developer','This is an awesome job!!!');
 $job1->months= 16;
@@ -10,18 +10,21 @@ $job1->months= 16;
 $job2 = new Job('PHP Developer','This is an bad job :(  !!!');
 $job2->months= 7;
 
+$job3 = new Job('Devops', 'This is an awesome job!!!');
+$job3->months = 32;
+
 
 $proyect1= new Proyect ('Proyect 1','Description 1');
-
-$proyects=[
-  $proyect1
-];
 
 $jobs = [
   $job1,
   $job2,
 
 ];
+$proyects=[
+  $proyect1
+];
+
 
 
 
