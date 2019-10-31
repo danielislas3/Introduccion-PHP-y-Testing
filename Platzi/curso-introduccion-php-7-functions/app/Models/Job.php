@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
 
-  protected $table = 'jobs';
+  protected $table = 'jobs'; //se conecta a la tabla jobs de la base de datos
+  
   public function getDurationAsString()
   {
 

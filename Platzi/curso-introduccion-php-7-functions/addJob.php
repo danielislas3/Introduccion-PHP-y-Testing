@@ -1,10 +1,10 @@
 <?php
 // var_dump($_GET);
- var_dump($_POST);
+// var_dump($_POST);
 require_once 'vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Models\Job;
+use App\Models\{Job, Proyect};
 
 $capsule = new Capsule;
 
@@ -27,10 +27,18 @@ $capsule->bootEloquent();
 if (!empty($_POST)) {
 
   $job = new Job();
+  $proyect = new Proyect();
+
+  $proyect->title = $_POST['titleProyect'];
+  $proyect->description = $_POST['descriptionProyect'];
+
   $job->title = $_POST['title'];
   $job->description = $_POST['description'];
+
   $job->save();
+  $proyect->save();
 }
+var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,14 +58,28 @@ if (!empty($_POST)) {
 <body>
   <h1>Add job</h1>
   <form action="addJob.php" method="post">
+
     <label for="">Title:</label>
     <input type="text" placeholder="Title" name="title">
     <br>
+
     <label for="">Description:</label>
     <input type="text" placeholder="Description" name="description">
     <br />
+    <br />
+
+    <h2>Add Proyect</h2>
+    <label for="">Title:</label>
+    <input type="text" placeholder="Title" name="titleProyect">
+    <br>
+    <label for="">Description:</label>
+    <input type="text" placeholder="Description" name="descriptionProyect">
+
     <button type="submit">Save</button>
+
   </form>
+  <hr />
+
 
 
 
