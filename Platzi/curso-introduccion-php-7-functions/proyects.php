@@ -2,5 +2,5 @@
 
 use App\Models\{Proyect};
 
-$proyects=Proyect::all();//trae todos los jobs
+$proyects=Proyect::all();//trae todos los proyects
 
