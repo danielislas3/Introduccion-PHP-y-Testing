@@ -1,0 +1,4 @@
+RewriteEngine on
+RewiteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+RewriteRule ^((?!public/).*)$ Introduccion-PHP/Platzi/curso-introduccion-php-7-functions/public/$1 [L,NC]
