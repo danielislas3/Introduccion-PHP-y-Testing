@@ -5,15 +5,6 @@ use App\Models\{Job,Proyect};
 
 $jobs=Job::all();//trae todos los jobs
 
-$proyect1= new Proyect ('Proyect 1','Description 1');
-
-
-$proyects=[
-  $proyect1
-];
-
-
-
 
 function printElement( $el) {
   // if($job->visible == false) {

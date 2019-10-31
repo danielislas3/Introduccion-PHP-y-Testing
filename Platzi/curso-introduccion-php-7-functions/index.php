@@ -24,6 +24,7 @@ $capsule->bootEloquent();
 
 
 include('jobs.php');// si no encuentra el archivo; arroja un warning
+include('proyects.php');// si no encuentra el archivo; arroja un warning
 //require('jobs.php');  *Con este comando tambien se importan pero si no encuentra el archivo el programa truena
 
 $name = 'Daniel Orio';
@@ -79,6 +80,7 @@ $limitMonths = 2000;
         <div>
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
+            
             <?php
             $totalMonths = 0;
             for($idx = 0;$idx < count($jobs); $idx++) {
@@ -91,16 +93,19 @@ $limitMonths = 2000;
               printElement($jobs[$idx]);
             }
             ?>
+
           </ul>
         </div>
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
             <ul>
+
             <?php
             for($idx = 0;$idx < count($proyects); $idx++) {
               printElement($proyects[$idx]);
             }
             ?>
+
           </ul>
             <div class="project">
                 <h5>Project X</h5>
