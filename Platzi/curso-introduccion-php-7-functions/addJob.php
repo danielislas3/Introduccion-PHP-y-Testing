@@ -1,6 +1,36 @@
 <?php
-  var_dump($_GET);
-  var_dump($_POST);
+// var_dump($_GET);
+ var_dump($_POST);
+require_once 'vendor/autoload.php';
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Models\Job;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+  'driver'    => 'mysql',
+  'host'      => 'localhost',
+  'database'  => 'cursophp',
+  'username'  => 'root',
+  'password'  => '',
+  'charset'   => 'utf8',
+  'collation' => 'utf8_unicode_ci',
+  'prefix'    => '',
+]);
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
+
+if (!empty($_POST)) {
+
+  $job = new Job();
+  $job->title = $_POST['title'];
+  $job->description = $_POST['description'];
+  $job->save();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,17 +51,17 @@
   <h1>Add job</h1>
   <form action="addJob.php" method="post">
     <label for="">Title:</label>
-    <input type="text" placeholder="Title" name="title" >
+    <input type="text" placeholder="Title" name="title">
     <br>
     <label for="">Description:</label>
-    <input type="text" placeholder="Description" name="description" >
+    <input type="text" placeholder="Description" name="description">
     <br />
     <button type="submit">Save</button>
   </form>
 
 
 
-  
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
