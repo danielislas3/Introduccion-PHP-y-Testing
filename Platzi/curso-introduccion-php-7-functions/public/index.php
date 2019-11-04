@@ -1,12 +1,14 @@
 <?php
-
+//Funciona psr7 moveiendo loss archovos a la raiz de htdocs
 ini_set('display_errors', 1);
 ini_set('display_starup_error', 1);
 error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+use App\Controllers\IndexController;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Aura\Router\RouterContainer;
 
 $capsule = new Capsule;
 
@@ -34,11 +36,25 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
   $_FILES
 );
 
-var_dump($request->getUri()->getPath());
-// $route = $_GET['route'] ?? '/';
+$routerContainer = new RouterContainer();
 
-// if ($route == '/') {
-//   require '../index.php';
-// } elseif ($route == 'addJob') {
-//   require '../addJob.php';
-// }
+$map = $routerContainer->getMap();
+$map->get('index', '/', [
+  'controller' => 'App\Controllers\IndexController',
+  'action' => 'indexAction'
+]);
+$map->get('addJobs', '/jobs/add', '../addJob.php');
+
+$matcher = $routerContainer->getMatcher();
+$route = $matcher->match($request);
+if (!$route) {
+  // get the first of the best-available non-matched routes
+  echo ('No hay ruta');
+} else {
+  $handlerData = $route->handler;
+  $controllerName = $handlerData['controller'];
+  $actionName =  $handlerData['action'];
+
+  $controller = new $controllerName;
+  $controller->actionName();
+}
