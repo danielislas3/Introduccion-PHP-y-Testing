@@ -1,26 +1,3 @@
-<?php
-// var_dump($_GET);
-// var_dump($_POST);
-
-use App\Models\{Job, Proyect};
-
-
-if (!empty($_POST)) {
-
-  $job = new Job();
-  $proyect = new Proyect();
-
-  $proyect->title = $_POST['titleProyect'];
-  $proyect->description = $_POST['descriptionProyect'];
-
-  $job->title = $_POST['title'];
-  $job->description = $_POST['description'];
-
-  $job->save();
-  $proyect->save();
-}
-var_dump($_POST);
-?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -3,7 +3,6 @@
 
 use App\Models\{Job,Proyect};
 
-$jobs=Job::all();//trae todos los jobs
 
 
 function printElement( $el) {

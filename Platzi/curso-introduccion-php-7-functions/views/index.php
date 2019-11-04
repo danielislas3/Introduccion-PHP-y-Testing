@@ -1,20 +1,3 @@
-<?php
-require_once 'vendor/autoload.php';
-
-use App\Models\{Job,Proyect};
-
-
-
-include('jobs.php');// si no encuentra el archivo; arroja un warning
-include('proyects.php');// si no encuentra el archivo; arroja un warning
-//require('jobs.php');  *Con este comando tambien se importan pero si no encuentra el archivo el programa truena
-
-$name = 'Daniel Orio';
-$limitMonths = 2000;
-
-
-?>
-
 <!doctype html>
 <html lang="en">
 
