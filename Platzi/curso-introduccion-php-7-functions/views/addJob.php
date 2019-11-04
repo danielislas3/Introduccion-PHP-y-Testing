@@ -15,7 +15,7 @@
 
 <body>
   <h1>Add job</h1>
-  <form action="addJob.php" method="post">
+  <form action="/jobs/add" method="post">
 
     <label for="">Title:</label>
     <input type="text" placeholder="Title" name="title">
