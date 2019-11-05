@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\{Job, Proyect};
+
 
 class JobsController extends BaseController
 {
