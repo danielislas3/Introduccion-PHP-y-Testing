@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\{Job, Proyect};
 
-class JobsController
+class JobsController extends BaseController
 {
   public function getAddJoobAction($request)
   {
@@ -24,6 +24,6 @@ class JobsController
       $job->save();
       $proyect->save();
     }
-    include '../views/addJob.php';
+    echo($this->renderHTML('addJob.twig'));
   }
 }
