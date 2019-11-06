@@ -4,28 +4,35 @@
 
   <h1>Add job</h1>
   <div class="alert alert-primary" role="alert">
-  {{responseMessage}}
+    {{responseMessage}}
   </div>
 
-  <form action="/jobs/add" method="post">
+  <form action="/jobs/add" method="post" class="form-group" enctype="multipart/form-data">
 
     <label for="">Title:</label>
-    <input type="text" placeholder="Title" name="title">
+    <input type="text" placeholder="Title" name="title" class="form-control">
     <br>
 
     <label for="">Description:</label>
-    <input type="text" placeholder="Description" name="description">
+    <input type="text" placeholder="Description" name="description" class="form-control">
     <br/>
     <br/>
 
     <h2>Add Proyect</h2>
     <label for="">Title:</label>
-    <input type="text" placeholder="Title" name="titleProyect">
+    <input type="text" placeholder="Title" name="titleProyect" class="form-control">
     <br>
     <label for="">Description:</label>
-    <input type="text" placeholder="Description" name="descriptionProyect">
+    <input type="text" placeholder="Description" name="descriptionProyect" class="form-control">
+    <br/>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" name="logo" id="validatedCustomFile"   accept="image/x-png,image/gif,image/jpeg" required>
+      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+    <br/>
 
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 
   </form>
   <hr/>

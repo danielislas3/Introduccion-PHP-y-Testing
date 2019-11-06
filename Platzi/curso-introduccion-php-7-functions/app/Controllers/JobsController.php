@@ -16,7 +16,17 @@ class JobsController extends BaseController
                   ->key('description', v::stringType()->notEmpty());
 
           try{
+
             $jobValidator->assert($postData); // trueF
+            $postData = $request->getParsedBody();
+
+            $files=$request->getUploadedFiles();
+            $logo=$files['logo'];
+            if($logo->getError()==UPLOAD_ERR_OK){
+              $filename=$logo->getClientFilename();
+              $logo->moveTo("uploads/$filename");
+            }
+
             $job = new Job();
             $proyect = new Proyect();
       
@@ -29,6 +39,7 @@ class JobsController extends BaseController
             $job->save();
             $proyect->save();
             $responseMessage='Saved';
+
           } catch(\Exception $e){
             var_dump($e->getMessage());
             $responseMessage=$e->getMessage();
