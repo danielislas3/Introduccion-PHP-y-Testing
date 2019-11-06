@@ -39,20 +39,41 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 $routerContainer = new RouterContainer();
 
 $map = $routerContainer->getMap();
+
 $map->get('index', '/', [
   'controller' => 'App\Controllers\IndexController',
   'action' => 'indexAction'
 ]);
-
 $map->get('addJobs', '/jobs/add',[
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJoobAction'
 ]);
-
 $map->post('saveJobs', '/jobs/add',[
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJoobAction'
 ]);
+
+
+$map->get('addUsers', '/users/add',[
+  'controller' => 'App\Controllers\UserController',
+  'action' => 'getAddUser'
+]);
+$map->post('saveUser', '/users/add',[
+  'controller' => 'App\Controllers\UserController',
+  'action' => 'postSaveUser'
+]);
+
+$map->get('loginForm', '/login',[
+  'controller' => 'App\Controllers\AuthController',
+  'action' => 'getLogin'
+]);
+$map->post('auth', '/auth',[
+  'controller' => 'App\Controllers\AuthController',
+  'action' => 'postLogin'
+]);
+
+
+
 
 function printElement( $el) {
   // if($job->visible == false) {
