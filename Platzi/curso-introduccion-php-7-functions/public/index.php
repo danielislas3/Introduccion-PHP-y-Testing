@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
 use App\Controllers\IndexController;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
@@ -44,38 +46,48 @@ $map->get('index', '/', [
   'controller' => 'App\Controllers\IndexController',
   'action' => 'indexAction'
 ]);
-$map->get('addJobs', '/jobs/add',[
+$map->get('addJobs', '/jobs/add', [
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJoobAction'
 ]);
-$map->post('saveJobs', '/jobs/add',[
+$map->post('saveJobs', '/jobs/add', [
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJoobAction'
 ]);
 
 
-$map->get('addUsers', '/users/add',[
+$map->get('addUsers', '/users/add', [
   'controller' => 'App\Controllers\UserController',
   'action' => 'getAddUser'
 ]);
-$map->post('saveUser', '/users/add',[
+$map->post('saveUser', '/users/add', [
   'controller' => 'App\Controllers\UserController',
   'action' => 'postSaveUser'
 ]);
 
-$map->get('loginForm', '/login',[
+$map->get('loginForm', '/login', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'getLogin'
 ]);
-$map->post('auth', '/auth',[
+$map->get('logout', '/logout', [
+  'controller' => 'App\Controllers\AuthController',
+  'action' => 'getLogout'
+]);
+$map->post('auth', '/auth', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'postLogin'
+]);
+$map->get('admin', '/admin', [
+  'controller' => 'App\Controllers\AdminController',
+  'action' => 'getIndex',
+  'auth' => true
 ]);
 
 
 
 
-function printElement( $el) {
+function printElement($el)
+{
   // if($job->visible == false) {
   //   return;
   //}
@@ -102,7 +114,21 @@ if (!$route) {
   $controllerName = $handlerData['controller'];
   $actionName =  $handlerData['action'];
 
+  $needsAuth = $handlerData['auth'] ?? false;
+  $sessionUserId = $_SESSION['userId'] ?? null;
+
+  if ($needsAuth && !$sessionUserId) {
+    echo 'protected route';
+  }
+
   $controller = new $controllerName;
   $response = $controller->$actionName($request);
+
+  foreach ($response->getHeaders() as $name => $values) {
+    foreach ($values as $value) {
+      header(sprintf('%s: %s', $name, $value), false);
+    }
+  }
+  http_response_code($response->getStatusCode());
   echo $response->getBody();
 }

@@ -2,6 +2,10 @@
 {% block content %}
   <h1>Login</h1>
 
+  <div class="alert alert-primary" role="alert">
+    {{responseMessage}}
+  </div>
+  
   <form action="/auth" method="post" class="form-group">
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
